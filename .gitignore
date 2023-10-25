@@ -1,0 +1,11 @@
+# Dependencies
+**/node_modules
+
+# Editor directories and files
+.vscode/
+
+#test
+**/test
+
+#environment
+**/.env
