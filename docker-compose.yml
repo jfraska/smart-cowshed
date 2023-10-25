@@ -1,9 +1,9 @@
-version:  "3.7"
+version: "3.9"
 
 services:
   db:
     container_name: db_app
-    image: mysql:5.7
+    image: mysql
     restart: unless-stopped
     environment:
       - MYSQL_ROOT_PASSWORD=$MYSQLDB_ROOT_PASSWORD
@@ -11,7 +11,7 @@ services:
     ports:
       - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
     volumes:
-      - db:/var/lib/mysql    
+      - db:/var/lib/mysql
     networks:
       - mynetwork
   ml:
@@ -19,7 +19,7 @@ services:
     build: ./ml-app
     restart: unless-stopped
     ports:
-      - $ML_LOCAL_PORT:$ML_DOCKER_PORT 
+      - $ML_LOCAL_PORT:$ML_DOCKER_PORT
     networks:
       - mynetwork
   backend:
@@ -43,7 +43,7 @@ services:
     networks:
       - mynetwork
 
-volumes: 
+volumes:
   db:
 
 networks:
