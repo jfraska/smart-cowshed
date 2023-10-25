@@ -17,25 +17,25 @@ router
     validate(userValidation.createCow),
     upload.any("file"),
     userController.createCow
-  )
-  .get(
-    auth("getCows"),
-    validate(userValidation.getCows),
-    userController.getCows
   );
+// .get(
+//   auth("getCows"),
+//   validate(userValidation.getCows),
+//   userController.getCows
+// );
 
-router
-  .route("/:id")
-  .get(auth("getCows"), validate(userValidation.getCow), userController.getCow)
-  .patch(
-    auth("manageCows"),
-    validate(userValidation.updateCow),
-    userController.updateCow
-  )
-  .delete(
-    auth("manageCows"),
-    validate(userValidation.deleteCow),
-    userController.deleteCow
-  );
+// router
+//   .route("/:id")
+//   .get(auth("getCows"), validate(userValidation.getCow), userController.getCow)
+//   .patch(
+//     auth("manageCows"),
+//     validate(userValidation.updateCow),
+//     userController.updateCow
+//   )
+//   .delete(
+//     auth("manageCows"),
+//     validate(userValidation.deleteCow),
+//     userController.deleteCow
+//   );
 
 module.exports = router;
