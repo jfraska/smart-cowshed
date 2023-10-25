@@ -3,6 +3,7 @@ const pick = require("../utils/pick");
 const ApiError = require("../utils/ApiError");
 const catchAsync = require("../utils/catchAsync");
 const { userService } = require("../services");
+const getPagingData = require("../utils/helper");
 
 const createUser = catchAsync(async (req, res) => {
   const user = await userService.createUser(req.body);
@@ -10,9 +11,48 @@ const createUser = catchAsync(async (req, res) => {
 });
 
 const getUsers = catchAsync(async (req, res) => {
-  const filter = pick(req.query, ["name", "role"]);
-  const options = pick(req.query, ["sortBy", "limit", "page"]);
-  const result = await userService.queryUsers(filter, options);
+  const { search, page } = req.query;
+  let paramQuerySQL = {
+    order: [["createdAt", "DESC"]],
+  };
+  let limit = 10;
+  let offset = 0;
+
+  // // searching
+  // if (search) {
+  //   paramQuerySQL.where = {
+  //     [Op.and]: [
+  //       paramQuerySQL.where,
+  //       {
+  //         [Op.and]: [
+  //           search.id_sapi
+  //             ? { id_sapi: { [Op.like]: `%${search.id_sapi}%` } }
+  //             : null,
+  //           search.status ? { status: search.status } : null,
+  //         ],
+  //       },
+  //     ],
+  //   };
+  // }
+
+  // pagination
+  if (page) {
+    if (page.size) {
+      limit = Number(page.size);
+      paramQuerySQL.limit = limit;
+    }
+
+    if (page.number) {
+      offset = Number(page.number) * limit - limit;
+      paramQuerySQL.offset = offset;
+    }
+  } else {
+    paramQuerySQL.limit = limit;
+    paramQuerySQL.offset = offset;
+  }
+
+  let result = await userService.getUserByParam(paramQuerySQL);
+  result = getPagingData(result, offset, limit);
   res.send(result);
 });
 

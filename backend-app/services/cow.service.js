@@ -7,16 +7,16 @@ const createCow = async (userBody) => {
   return Cow.create(userBody);
 };
 
-const getUserByUsername = async (username) => {
-  return User.findOne({ where: { username: username } });
+const getCowsByParam = async (param) => {
+  return Cow.findAndCountAll(param);
 };
 
-const getUserById = async (id) => {
-  return User.findByPk(id);
+const getCowById = async (id) => {
+  return Cow.findByPk(id);
 };
 
 module.exports = {
   createCow,
-  getUserByUsername,
-  getUserById,
+  getCowsByParam,
+  getCowById,
 };

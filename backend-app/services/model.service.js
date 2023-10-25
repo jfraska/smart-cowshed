@@ -8,15 +8,11 @@ const getPredictModel = async (image) => {
   const file = new FormData();
   file.append("file", image, { filename: "temp.jpg" });
 
-  const response = await axios.post(
-    `http://ml_app:${config.ML_PORT}/predict`,
-    file,
-    {
-      headers: {
-        ...file.getHeaders(),
-      },
-    }
-  );
+  const response = await axios.post(`http://62.72.56.98:5000/predict`, file, {
+    headers: {
+      ...file.getHeaders(),
+    },
+  });
 
   if (!response.data) {
     throw new ApiError(httpStatus.BAD_REQUEST, "Model error");

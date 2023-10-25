@@ -21,8 +21,26 @@ const getUserById = async (id) => {
   return User.findByPk(id);
 };
 
+const getUserByParam = async (param) => {
+  return User.findAndCountAll(param);
+};
+
+const updateUserById = async (userId, updateBody) => {
+  const user = await getUserById(userId);
+  if (!user) {
+    throw new ApiError(httpStatus.NOT_FOUND, "User not found");
+  }
+  if (updateBody.username && user.username !== updateBody.username) {
+    throw new ApiError(httpStatus.BAD_REQUEST, "Email already taken");
+  }
+
+  return await User.update(updateBody);
+};
+
 module.exports = {
   createUser,
   getUserByUsername,
   getUserById,
+  getUserByParam,
+  updateUserById,
 };
