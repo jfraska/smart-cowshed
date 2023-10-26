@@ -56,6 +56,6 @@ app.use(errorConverter);
 // handle error
 app.use(errorHandler);
 
-app.listen(config.server_port, () => {
-  console.log("Server started on: " + config.server_port);
+app.listen(process.env.PORT, () => {
+  console.log("Server started on: " + process.env.PORT);
 });
