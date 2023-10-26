@@ -34,7 +34,7 @@ services:
       - $NODE_LOCAL_PORT:$NODE_PORT
     environment:
       - DB_HOST=db
-      - ML_SERVICE_HOST="ml:$ML_LOCAL_PORT"
+      - ML_SERVICE_HOST=ml:$ML_LOCAL_PORT
       - PORT=$NODE_PORT
     stdin_open: true
     tty: true
