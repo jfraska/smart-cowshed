@@ -10,6 +10,10 @@ const createCow = catchAsync(async (req, res) => {
   let data = req.body;
   data.userId = req.user.id;
 
+  if (!req.files["kaki"] || !req.files["mulut"]) {
+    throw new ApiError(httpStatus.NOT_FOUND, "Image is required");
+  }
+
   const imageKaki = req.files["kaki"][0].buffer;
   const imageMulut = req.files["mulut"][0].buffer;
 
