@@ -6,10 +6,11 @@ services:
     image: mysql
     restart: unless-stopped
     environment:
-      - MYSQL_ROOT_PASSWORD=$MYSQLDB_ROOT_PASSWORD
-      - MYSQL_DATABASE=$MYSQLDB_DATABASE
+      - MYSQL_USER=$DB_USERNAME
+      - MYSQL_PASSWORD=$DB_PASSWORD
+      - MYSQL_DATABASE=$DB_USERNAME
     ports:
-      - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
+      - $DB_LOCAL_PORT:$DB_PORT
     volumes:
       - db:/var/lib/mysql
     networks:
@@ -19,7 +20,7 @@ services:
     build: ./ml-app
     restart: unless-stopped
     ports:
-      - $ML_LOCAL_PORT:$ML_DOCKER_PORT
+      - $ML_LOCAL_PORT:$ML_PORT
     networks:
       - mynetwork
   backend:
@@ -31,13 +32,10 @@ services:
     restart: unless-stopped
     env_file: ./.env
     ports:
-      - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
+      - $NODE_LOCAL_PORT:$NODE_PORT
     environment:
       - DB_HOST=db
-      - MYSQL_USER=$MYSQLDB_USER
-      - MYSQL_PASSWORD=$MYSQLDB_ROOT_PASSWORD
-      - MYSQL_DATABASE=$MYSQLDB_DATABASE
-      - DB_PORT=$NODE_LOCAL_PORT
+      - PORT=$NODE_PORT
     stdin_open: true
     tty: true
     networks:
