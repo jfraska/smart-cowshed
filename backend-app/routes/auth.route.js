@@ -10,6 +10,9 @@ router.post(
   validate(authValidation.register),
   authController.register
 );
+
 router.post("/login", validate(authValidation.login), authController.login);
+
+router.get("/auth", auth("authCek"), authController.authCek);
 
 module.exports = router;
