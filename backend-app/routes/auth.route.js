@@ -13,6 +13,6 @@ router.post(
 
 router.post("/login", validate(authValidation.login), authController.login);
 
-router.get("/auth", auth("authCek"), authController.authCek);
+router.get("/", auth("authCek"), authController.authCek);
 
 module.exports = router;
