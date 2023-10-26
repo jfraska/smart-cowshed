@@ -1,5 +1,7 @@
 const httpStatus = require("http-status");
 const ApiError = require("../utils/ApiError");
+const env = process.env.NODE_ENV || "development";
+const config = require(__dirname + "/../config/config.js")[env];
 const axios = require("axios");
 const FormData = require("form-data");
 
