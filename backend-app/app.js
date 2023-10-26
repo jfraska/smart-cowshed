@@ -6,7 +6,8 @@ const bodyParser = require("body-parser");
 const { jwtStrategy } = require("./config/passport");
 const routes = require("./routes");
 const morgan = require("./config/morgan");
-const config = require("./config/config");
+const env = process.env.NODE_ENV || "development";
+const config = require(__dirname + "/config/config.js")[env];
 const httpStatus = require("http-status");
 const { errorConverter, errorHandler } = require("./middlewares/error");
 const ApiError = require("./utils/ApiError");
@@ -55,6 +56,6 @@ app.use(errorConverter);
 // handle error
 app.use(errorHandler);
 
-app.listen(config.PORT, () => {
-  console.log("Server started on: " + config.PORT);
+app.listen(config.server_port, () => {
+  console.log("Server started on: " + config.server_port);
 });

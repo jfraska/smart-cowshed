@@ -2,7 +2,6 @@ const httpStatus = require("http-status");
 const ApiError = require("../utils/ApiError");
 const axios = require("axios");
 const FormData = require("form-data");
-const config = require("../config/config");
 
 const getPredictModel = async (image) => {
   const file = new FormData();

@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const moment = require("moment");
-const config = require("../config/config");
+const env = process.env.NODE_ENV || "development";
+const config = require(__dirname + "/../config/config.js")[env];
 
 const generateToken = (userId, expires, type, secret = config.jwt.secret) => {
   const payload = {

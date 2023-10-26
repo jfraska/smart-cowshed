@@ -1,6 +1,5 @@
 const Sequelize = require("sequelize");
 const httpStatus = require("http-status");
-const config = require("../config/config");
 const logger = require("../config/logger");
 const ApiError = require("../utils/ApiError");
 
@@ -20,7 +19,7 @@ const errorConverter = (err, req, res, next) => {
 // eslint-disable-next-line no-unused-vars
 const errorHandler = (err, req, res, next) => {
   let { statusCode, message } = err;
-  if (config.ENV === "production" && !err.isOperational) {
+  if (process.env.NODE_ENV === "production" && !err.isOperational) {
     statusCode = httpStatus.INTERNAL_SERVER_ERROR;
     message = httpStatus[httpStatus.INTERNAL_SERVER_ERROR];
   }
@@ -30,10 +29,10 @@ const errorHandler = (err, req, res, next) => {
   const response = {
     code: statusCode,
     message,
-    ...(config.ENV === "development" && { stack: err.stack }),
+    ...(process.env.NODE_ENV === "development" && { stack: err.stack }),
   };
 
-  if (config.ENV === "development") {
+  if (process.env.NODE_ENV === "development") {
     logger.error(err);
   }
 

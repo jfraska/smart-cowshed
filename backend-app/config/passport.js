@@ -1,5 +1,6 @@
 const { Strategy: JwtStrategy, ExtractJwt } = require("passport-jwt");
-const config = require("./config");
+const env = process.env.NODE_ENV || "development";
+const config = require(__dirname + "/../config/config.js")[env];
 const db = require("../models");
 const User = db.user;
 
