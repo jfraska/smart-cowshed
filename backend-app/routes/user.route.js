@@ -9,7 +9,7 @@ const router = express.Router();
 router
   .route("/")
   .post(
-    auth("manageUsers"),
+    auth("manageUser"),
     validate(userValidation.createUser),
     userController.createUser
   )
@@ -32,7 +32,7 @@ router
     userController.getUser
   )
   .patch(
-    auth("manageUsers"),
+    auth("manageUser"),
     validate(userValidation.updateUser),
     userController.updateUser
   );

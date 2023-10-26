@@ -85,15 +85,21 @@ const getCows = catchAsync(async (req, res) => {
 });
 
 const getCow = catchAsync(async (req, res) => {
-  const cow = await cowService.getCowById(req.user.id);
+  const cow = await cowService.getCowById(req.params.cowId);
   if (!cow) {
     throw new ApiError(httpStatus.NOT_FOUND, "Cow not found");
   }
   res.send(cow);
 });
 
+const deleteCow = catchAsync(async (req, res) => {
+  await cowService.deleteCowById(req.params.cowId);
+  res.status(httpStatus.NO_CONTENT).send();
+});
+
 module.exports = {
   createCow,
   getCows,
   getCow,
+  deleteCow,
 };

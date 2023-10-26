@@ -3,19 +3,20 @@ const { password } = require("./custom.validation");
 
 const createUser = {
   body: Joi.object().keys({
-    username: Joi.string().required().email(),
+    username: Joi.string().required(),
     password: Joi.string().required().custom(password),
     name: Joi.string().required(),
-    role: Joi.string().required().valid("user", "admin"),
+    address: Joi.string().required(),
+    no_telp: Joi.string().required(),
+    lat: Joi.string(),
+    lon: Joi.string(),
+    role: Joi.string().required().valid("user", "admin", "puskewan"),
   }),
 };
 
 const getUsers = {
   query: Joi.object().keys({
-    name: Joi.string(),
-    role: Joi.string(),
-    sortBy: Joi.string(),
-    limit: Joi.number().integer(),
+    search: Joi.string(),
     page: Joi.number().integer(),
   }),
 };
@@ -27,14 +28,16 @@ const getUser = {
 };
 
 const updateUser = {
-  params: Joi.object().keys({
-    userId: Joi.required(),
-  }),
   body: Joi.object()
     .keys({
-      username: Joi.string().email(),
+      username: Joi.string(),
       password: Joi.string().custom(password),
       name: Joi.string(),
+      address: Joi.string(),
+      no_telp: Joi.string(),
+      lat: Joi.string(),
+      lon: Joi.string(),
+      role: Joi.string().valid("user", "admin", "puskewan"),
     })
     .min(1),
 };

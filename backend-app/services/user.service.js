@@ -30,11 +30,15 @@ const updateUserById = async (userId, updateBody) => {
   if (!user) {
     throw new ApiError(httpStatus.NOT_FOUND, "User not found");
   }
-  if (updateBody.username && user.username !== updateBody.username) {
+  if (updateBody.username && (await getUserByUsername(updateBody.username))) {
     throw new ApiError(httpStatus.BAD_REQUEST, "Email already taken");
   }
 
-  return await User.update(updateBody);
+  await User.update(updateBody, {
+    where: { id: userId },
+  });
+
+  return updateBody;
 };
 
 module.exports = {

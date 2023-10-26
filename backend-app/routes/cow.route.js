@@ -14,7 +14,7 @@ router
   .route("/")
   .get(auth("getCows"), validate(cowValidation.getCows), cowController.getCows)
   .post(
-    auth("manageCows"),
+    auth("manageCow"),
     validate(cowValidation.createCow),
     upload.fields([
       { name: "kaki", maxCount: 1 },
@@ -24,17 +24,17 @@ router
   );
 
 router
-  .route("/:id")
-  .get(auth("getCows"), validate(cowValidation.getCow), cowController.getCow);
+  .route("/:cowId")
+  .get(auth("getCows"), validate(cowValidation.getCow), cowController.getCow)
+  .delete(
+    auth("manageCow"),
+    validate(cowValidation.deleteCow),
+    cowController.deleteCow
+  );
 // .patch(
 //   auth("manageCows"),
 //   validate(cowValidation.updateCow),
 //   cowController.updateCow
-// )
-// .delete(
-//   auth("manageCows"),
-//   validate(cowValidation.deleteCow),
-//   cowController.deleteCow
 // );
 
 module.exports = router;
