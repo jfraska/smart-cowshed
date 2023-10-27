@@ -18,7 +18,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
     },
     suhu: {
-      type: Sequelize.DOUBLE,
+      type: Sequelize.FLOAT,
     },
     status: {
       type: Sequelize.STRING,
@@ -29,7 +29,13 @@ module.exports = (sequelize, Sequelize) => {
     Cow.belongsTo(models.user, {
       onDelete: "CASCADE",
       foreignKey: "userId",
-      as: "users",
+      as: "owner",
+    });
+
+    Cow.belongsTo(models.user, {
+      onDelete: "CASCADE",
+      foreignKey: "puskeswanId",
+      as: "puskeswan",
     });
   };
 

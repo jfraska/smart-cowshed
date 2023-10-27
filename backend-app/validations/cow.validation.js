@@ -6,16 +6,15 @@ const createCow = {
     kaki: Joi.string().required(),
     mulut: Joi.string().required(),
     suhu: Joi.string().required(),
+    lat: Joi.string(),
+    lng: Joi.string(),
     status: Joi.string().required().valid("sehat", "sakit"),
   }),
 };
 
 const getUsers = {
   query: Joi.object().keys({
-    name: Joi.string(),
-    role: Joi.string(),
-    sortBy: Joi.string(),
-    limit: Joi.number().integer(),
+    search: Joi.string(),
     page: Joi.number().integer(),
   }),
 };
@@ -26,22 +25,9 @@ const getCow = {
   }),
 };
 
-const updateUser = {
+const deleteCow = {
   params: Joi.object().keys({
-    userId: Joi.required(),
-  }),
-  body: Joi.object()
-    .keys({
-      username: Joi.string().email(),
-      password: Joi.string(),
-      name: Joi.string(),
-    })
-    .min(1),
-};
-
-const deleteUser = {
-  params: Joi.object().keys({
-    userId: Joi.string(),
+    cowId: Joi.string(),
   }),
 };
 
@@ -49,6 +35,5 @@ module.exports = {
   createCow,
   getUsers,
   getCow,
-  updateUser,
-  deleteUser,
+  deleteCow,
 };

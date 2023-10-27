@@ -8,14 +8,14 @@ const register = {
     name: Joi.string().required(),
     address: Joi.string().required(),
     no_telp: Joi.string().required(),
-    role: Joi.string().valid("admin", "user", "puskewan").default("user"),
+    role: Joi.string().valid("admin", "user", "puskeswan").default("user"),
     lat: Joi.string().when("role", {
-      is: "puskewan",
+      is: "puskeswan",
       then: Joi.string().required(),
       otherwise: Joi.string(),
     }),
     lon: Joi.string().when("role", {
-      is: "puskewan",
+      is: "puskeswan",
       then: Joi.string().required(),
       otherwise: Joi.string(),
     }),

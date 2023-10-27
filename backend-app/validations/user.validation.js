@@ -9,8 +9,8 @@ const createUser = {
     address: Joi.string().required(),
     no_telp: Joi.string().required(),
     lat: Joi.string(),
-    lon: Joi.string(),
-    role: Joi.string().required().valid("user", "admin", "puskewan"),
+    lng: Joi.string(),
+    role: Joi.string().required().valid("user", "admin", "puskeswan"),
   }),
 };
 
@@ -36,8 +36,8 @@ const updateUser = {
       address: Joi.string(),
       no_telp: Joi.string(),
       lat: Joi.string(),
-      lon: Joi.string(),
-      role: Joi.string().valid("user", "admin", "puskewan"),
+      lng: Joi.string(),
+      role: Joi.string().valid("user", "admin", "puskeswan"),
     })
     .min(1),
 };

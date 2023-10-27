@@ -20,7 +20,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
     },
     role: {
-      type: Sequelize.ENUM("admin", "user", "puskesmas", "guest"),
+      type: Sequelize.ENUM("admin", "user", "puskeswan"),
       defaultValue: "user",
     },
     no_telp: {
@@ -30,10 +30,10 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
     },
     lat: {
-      type: Sequelize.STRING,
+      type: Sequelize.FLOAT,
     },
-    lon: {
-      type: Sequelize.STRING,
+    lng: {
+      type: Sequelize.FLOAT,
     },
   });
 

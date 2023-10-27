@@ -1,7 +1,7 @@
 const httpStatus = require("http-status");
 const ApiError = require("../utils/ApiError");
 const catchAsync = require("../utils/catchAsync");
-const { cowService, modelService } = require("../services");
+const { cowService, modelService, userService } = require("../services");
 const db = require("../models");
 const Op = db.Sequelize.Op;
 const getPagingData = require("../utils/helper");
@@ -32,6 +32,9 @@ const createCow = catchAsync(async (req, res) => {
     data.status = "sehat";
   }
 
+  puskeswan = await userService.getPuskeswanbyRole(data.lat, data.lng);
+
+  data.puskeswanId = puskeswan[0].id;
   const cow = await cowService.createCow(data);
   res.status(httpStatus.CREATED).send(cow);
 });

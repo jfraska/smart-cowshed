@@ -28,15 +28,15 @@ module.exports = {
         defaultValue: null,
       },
       role: {
-        type: Sequelize.ENUM("admin", "user", "puskewan"),
+        type: Sequelize.ENUM("admin", "user", "puskeswan"),
         defaultValue: "user",
       },
       lat: {
-        type: Sequelize.STRING(50),
+        type: Sequelize.FLOAT(50),
         defaultValue: null,
       },
-      lon: {
-        type: Sequelize.STRING(50),
+      lng: {
+        type: Sequelize.FLOAT(50),
         defaultValue: null,
       },
       createdAt: {

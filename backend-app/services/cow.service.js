@@ -1,6 +1,7 @@
 const httpStatus = require("http-status");
 const db = require("../models");
 const Cow = db.cow;
+const User = db.user;
 const ApiError = require("../utils/ApiError");
 
 const createCow = async (userBody) => {
@@ -8,11 +9,21 @@ const createCow = async (userBody) => {
 };
 
 const getCowsByParam = async (param) => {
-  return Cow.findAndCountAll(param);
+  return Cow.findAndCountAll({
+    ...param,
+    attributes: ["id", "id_sapi", "status"],
+  });
 };
 
 const getCowById = async (id) => {
-  return Cow.findByPk(id);
+  return Cow.findByPk(id, {
+    attributes: ["id", "id_sapi", "status", "kaki", "mulut", "suhu", "status"],
+    include: {
+      model: User,
+      as: "puskeswan",
+      attributes: ["id", "name", "no_telp", "address"],
+    },
+  });
 };
 
 const deleteCowById = async (cowId) => {
