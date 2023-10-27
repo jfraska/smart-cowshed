@@ -23,6 +23,11 @@ const getCowById = async (id) => {
       as: "puskeswan",
       attributes: ["id", "name", "no_telp", "address"],
     },
+    include: {
+      model: User,
+      as: "owner",
+      attributes: ["id", "address", "no_telp", "lat", "lng"],
+    },
   });
 };
 
