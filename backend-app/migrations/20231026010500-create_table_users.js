@@ -7,6 +7,11 @@ module.exports = {
         type: Sequelize.UUID,
         primaryKey: true,
       },
+      username: {
+        type: Sequelize.STRING(255),
+        unique: true,
+        allowNull: false,
+      },
       password: {
         type: Sequelize.STRING(255),
         defaultValue: null,
@@ -23,13 +28,14 @@ module.exports = {
         type: Sequelize.STRING(255),
         defaultValue: null,
       },
-      username: {
-        type: Sequelize.STRING(255),
-        defaultValue: null,
-      },
       role: {
         type: Sequelize.ENUM("admin", "user", "puskeswan"),
         defaultValue: "user",
+      },
+      fcmToken: {
+        type: Sequelize.STRING(255),
+        unique: true,
+        allowNull: false,
       },
       lat: {
         type: Sequelize.FLOAT(50),

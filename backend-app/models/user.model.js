@@ -29,6 +29,11 @@ module.exports = (sequelize, Sequelize) => {
     address: {
       type: Sequelize.STRING,
     },
+    fcmToken: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      unique: true,
+    },
     lat: {
       type: Sequelize.FLOAT,
     },
