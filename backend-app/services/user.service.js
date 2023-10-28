@@ -14,7 +14,7 @@ const createUser = async (userBody) => {
   return User.create(userBody);
 };
 
-const getPuskeswanbyRole = async (userLat, userLng) => {
+const getPuskeswanByRole = async (userLat, userLng) => {
   const puskewan = await User.findAll({
     where: {
       role: "puskeswan",
@@ -88,5 +88,5 @@ module.exports = {
   getUserById,
   getUserByParam,
   updateUserById,
-  getPuskeswanbyRole,
+  getPuskeswanByRole,
 };

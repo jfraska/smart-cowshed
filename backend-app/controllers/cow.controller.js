@@ -1,7 +1,12 @@
 const httpStatus = require("http-status");
 const ApiError = require("../utils/ApiError");
 const catchAsync = require("../utils/catchAsync");
-const { cowService, modelService, userService } = require("../services");
+const {
+  cowService,
+  modelService,
+  userService,
+  firebaseService,
+} = require("../services");
 const db = require("../models");
 const Op = db.Sequelize.Op;
 const getPagingData = require("../utils/helper");
@@ -14,9 +19,10 @@ const createCow = catchAsync(async (req, res) => {
     throw new ApiError(httpStatus.NOT_FOUND, "Image is required");
   }
 
-  const imageKaki = req.files["kaki"][0].buffer;
-  const imageMulut = req.files["mulut"][0].buffer;
+  const imageKaki = req.files["kaki"][0].destination;
+  const imageMulut = req.files["mulut"][0].destination;
 
+  //get predict model
   predictKaki = await modelService.getPredictModel(imageKaki);
   predictMulut = await modelService.getPredictModel(imageMulut);
 
@@ -32,10 +38,19 @@ const createCow = catchAsync(async (req, res) => {
     data.status = "sehat";
   }
 
-  puskeswan = await userService.getPuskeswanbyRole(data.lat, data.lng);
-
+  //get nearest puskeswan
+  puskeswan = await userService.getPuskeswanByRole(data.lat, data.lng);
   data.puskeswanId = puskeswan[0].id;
+
   const cow = await cowService.createCow(data);
+
+  //push notification to puskeswan
+  await firebaseService.sendNotification(
+    "notif",
+    "ada pasien cuyy",
+    data.puskeswanId
+  );
+
   res.status(httpStatus.CREATED).send(cow);
 });
 
@@ -57,7 +72,7 @@ const getCows = catchAsync(async (req, res) => {
     paramQuerySQL.where = {};
   }
 
-  // searching by id_sapi
+  // search by id_sapi
   if (search) {
     paramQuerySQL.where = {
       [Op.and]: [

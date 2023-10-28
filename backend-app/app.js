@@ -11,6 +11,7 @@ const config = require(__dirname + "/config/config.js")[env];
 const httpStatus = require("http-status");
 const { errorConverter, errorHandler } = require("./middlewares/error");
 const ApiError = require("./utils/ApiError");
+const path = require("path");
 
 const app = express();
 
@@ -41,6 +42,9 @@ const db = require("./models");
 
 // For explotation. Database is not dropped.
 db.sequelize.sync();
+
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, "public")));
 
 // v1 api routes
 app.use("/", routes);

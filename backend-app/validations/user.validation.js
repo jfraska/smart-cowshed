@@ -11,6 +11,7 @@ const createUser = {
     lat: Joi.string(),
     lng: Joi.string(),
     role: Joi.string().required().valid("user", "admin", "puskeswan"),
+    fcm: Joi.string().required(),
   }),
 };
 
@@ -38,6 +39,7 @@ const updateUser = {
       lat: Joi.string(),
       lng: Joi.string(),
       role: Joi.string().valid("user", "admin", "puskeswan"),
+      fcm: Joi.string(),
     })
     .min(1),
 };
