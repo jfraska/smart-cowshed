@@ -5,6 +5,9 @@
 .vscode/
 .vs/
 
+# file uploads
+**/public/uploads/*
+
 #test
 **/test
 

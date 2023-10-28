@@ -19,8 +19,8 @@ const createCow = catchAsync(async (req, res) => {
     throw new ApiError(httpStatus.NOT_FOUND, "Image is required");
   }
 
-  const imageKaki = req.files["kaki"][0].destination;
-  const imageMulut = req.files["mulut"][0].destination;
+  const imageKaki = req.files["kaki"][0].path;
+  const imageMulut = req.files["mulut"][0].path;
 
   //get predict model
   predictKaki = await modelService.getPredictModel(imageKaki);

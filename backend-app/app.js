@@ -49,6 +49,11 @@ app.use(express.static(path.join(__dirname, "public")));
 // v1 api routes
 app.use("/", routes);
 
+app.get("/image/:filename", (req, res) => {
+  const filename = req.params.filename;
+  res.sendFile(path.join(__dirname, "public/uploads", filename));
+});
+
 // send back a 404 error for any unknown api request
 app.use((req, res, next) => {
   next(new ApiError(httpStatus.NOT_FOUND, "Not found"));
