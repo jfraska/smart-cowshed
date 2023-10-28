@@ -39,7 +39,6 @@ module.exports = {
       },
       profileImg: {
         type: Sequelize.STRING(255),
-        unique: true,
         defaultValue: "default-profile.png",
       },
       lat: {
