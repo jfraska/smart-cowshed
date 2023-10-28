@@ -48,6 +48,8 @@ const createCow = catchAsync(async (req, res) => {
 
   const cow = await cowService.createCow(data);
 
+  console.log(data.lat, data.lng);
+
   //push notification to puskeswan
   await firebaseService.sendNotification(
     "notif",
