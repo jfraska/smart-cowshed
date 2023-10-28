@@ -40,6 +40,7 @@ const updateUser = {
       lng: Joi.string(),
       role: Joi.string().valid("user", "admin", "puskeswan"),
       fcm: Joi.string(),
+      profile: Joi.string(),
     })
     .min(1),
 };

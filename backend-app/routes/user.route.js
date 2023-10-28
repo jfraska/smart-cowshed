@@ -3,8 +3,37 @@ const auth = require("../middlewares/auth");
 const validate = require("../middlewares/validate");
 const userValidation = require("../validations");
 const userController = require("../controllers/user.controller");
+const multer = require("multer");
+const path = require("path");
 
 const router = express.Router();
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, path.join(__dirname, "../public/upload"));
+  },
+  filename: function (req, file, cb) {
+    cb(
+      null,
+      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+    );
+  },
+});
+
+const upload = multer({
+  storage: storage,
+  fileFilter: (req, file, cb) => {
+    if (
+      file.mimetype == "image/png" ||
+      file.mimetype == "image/jpg" ||
+      file.mimetype == "image/jpeg"
+    ) {
+      cb(null, true);
+    } else {
+      return cb(new Error("Invalid mime type"));
+    }
+  },
+});
 
 router
   .route("/")
@@ -34,6 +63,7 @@ router
   .patch(
     auth("manageUser"),
     validate(userValidation.updateUser),
+    upload.single("profile"),
     userController.updateUser
   );
 

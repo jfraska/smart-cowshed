@@ -56,6 +56,7 @@ const getUserById = async (id) => {
       "role",
       "no_telp",
       "address",
+      "profileImg",
       "lat",
       "lng",
     ],
@@ -65,7 +66,15 @@ const getUserById = async (id) => {
 const getUserByParam = async (param) => {
   return User.findAndCountAll({
     ...param,
-    attributes: ["id", "username", "name", "role", "no_telp", "address"],
+    attributes: [
+      "id",
+      "username",
+      "profileImg",
+      "name",
+      "role",
+      "no_telp",
+      "address",
+    ],
   });
 };
 

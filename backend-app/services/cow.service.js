@@ -17,7 +17,18 @@ const getCowsByParam = async (param) => {
 
 const getCowById = async (id) => {
   return Cow.findByPk(id, {
-    attributes: ["id", "id_sapi", "status", "kaki", "mulut", "suhu", "status"],
+    attributes: [
+      "id",
+      "id_sapi",
+      "status",
+      "kaki",
+      "mulut",
+      "suhu",
+      "status",
+      "kakiImg",
+      "mulutImg",
+      "createdAt",
+    ],
     include: [
       {
         model: User,

@@ -23,6 +23,16 @@ module.exports = {
       mulut: {
         type: Sequelize.STRING(50),
       },
+      kakiImg: {
+        type: Sequelize.STRING(255),
+        unique: true,
+        defaultValue: null,
+      },
+      mulutImg: {
+        type: Sequelize.STRING(255),
+        unique: true,
+        defaultValue: null,
+      },
       createdAt: {
         type: Sequelize.DATE,
         allowNull: false,

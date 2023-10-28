@@ -37,6 +37,11 @@ module.exports = {
         unique: true,
         allowNull: false,
       },
+      profileImg: {
+        type: Sequelize.STRING(255),
+        unique: true,
+        defaultValue: null,
+      },
       lat: {
         type: Sequelize.FLOAT(50),
         defaultValue: null,

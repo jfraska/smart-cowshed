@@ -22,6 +22,10 @@ const createCow = catchAsync(async (req, res) => {
   const imageKaki = req.files["kaki"][0].path;
   const imageMulut = req.files["mulut"][0].path;
 
+  //save filename image in database
+  data.kakiImg = req.files["kaki"][0].filename;
+  data.mulutImg = req.files["mulut"][0].filename;
+
   //get predict model
   predictKaki = await modelService.getPredictModel(imageKaki);
   predictMulut = await modelService.getPredictModel(imageMulut);

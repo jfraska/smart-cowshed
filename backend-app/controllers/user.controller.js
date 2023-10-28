@@ -64,6 +64,7 @@ const getUser = catchAsync(async (req, res) => {
 });
 
 const updateUser = catchAsync(async (req, res) => {
+  req.body.profileImg = req.file.filename;
   const user = await userService.updateUserById(req.user.id, req.body);
   res.send(user);
 });

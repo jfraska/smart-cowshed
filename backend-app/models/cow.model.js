@@ -17,6 +17,14 @@ module.exports = (sequelize, Sequelize) => {
     mulut: {
       type: Sequelize.STRING,
     },
+    kakiImg: {
+      type: Sequelize.STRING,
+      unique: true,
+    },
+    mulutImg: {
+      type: Sequelize.STRING,
+      unique: true,
+    },
     suhu: {
       type: Sequelize.FLOAT,
     },
