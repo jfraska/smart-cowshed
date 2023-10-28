@@ -85,9 +85,11 @@ const updateUserById = async (userId, updateBody) => {
   }
   
   updateBody.password = bcrypt.hashSync(updateBody.password);
-  return User.update(updateBody, {
+  await User.update(updateBody, {
     where: { id: userId },
   });
+
+  return updateBody;
 };
 
 module.exports = {
