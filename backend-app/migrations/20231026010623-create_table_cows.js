@@ -25,12 +25,10 @@ module.exports = {
       },
       kakiImg: {
         type: Sequelize.STRING(255),
-        unique: true,
         defaultValue: null,
       },
       mulutImg: {
         type: Sequelize.STRING(255),
-        unique: true,
         defaultValue: null,
       },
       createdAt: {
