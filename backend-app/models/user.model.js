@@ -31,8 +31,6 @@ module.exports = (sequelize, Sequelize) => {
     },
     fcmToken: {
       type: Sequelize.STRING,
-      allowNull: false,
-      unique: true,
     },
     profileImg: {
       type: Sequelize.STRING,

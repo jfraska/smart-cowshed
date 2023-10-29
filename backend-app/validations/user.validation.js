@@ -11,7 +11,7 @@ const createUser = {
     lat: Joi.string(),
     lng: Joi.string(),
     role: Joi.string().required().valid("user", "admin", "puskeswan"),
-    fcm: Joi.string().required(),
+    fcm: Joi.string(),
     profile: Joi.string(),
   }),
 };
