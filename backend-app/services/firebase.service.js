@@ -19,6 +19,10 @@ const getFcmTokenById = async (id) => {
 const sendNotification = async (title, messageBody, userId) => {
   const user = await getFcmTokenById(userId);
 
+  if (!user || !user.fcmToken) {
+    return;
+  }
+
   const message = {
     notification: {
       title: title,

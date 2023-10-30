@@ -43,8 +43,8 @@ const createCow = catchAsync(async (req, res) => {
   }
 
   //get nearest puskeswan
-  puskeswan = await userService.getPuskeswanByRole(data.lat, data.lng);
-  data.puskeswanId = puskeswan[0].id;
+  nearestPuskeswan = await userService.getPuskeswanByRole(data.lat, data.lng);
+  data.puskeswanId = nearestPuskeswan[0].id;
 
   const cow = await cowService.createCow(data);
 
