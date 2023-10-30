@@ -13,15 +13,19 @@ module.exports = {
       },
       suhu: {
         type: Sequelize.DOUBLE,
+        defaultValue: null,
       },
       status: {
         type: Sequelize.STRING(255),
+        defaultValue: null,
       },
       kaki: {
         type: Sequelize.STRING(50),
+        defaultValue: null,
       },
       mulut: {
         type: Sequelize.STRING(50),
+        defaultValue: null,
       },
       kakiImg: {
         type: Sequelize.STRING(255),
