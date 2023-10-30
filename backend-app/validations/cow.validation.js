@@ -8,7 +8,6 @@ const createCow = {
     suhu: Joi.string().required(),
     lat: Joi.string(),
     lng: Joi.string(),
-    status: Joi.string().required().valid("sehat", "sakit"),
   }),
 };
 

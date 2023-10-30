@@ -83,8 +83,11 @@ const updateUserById = async (userId, updateBody) => {
   if (!user) {
     throw new ApiError(httpStatus.NOT_FOUND, "User not found");
   }
-  
-  updateBody.password = bcrypt.hashSync(updateBody.password);
+
+  if (updateBody.password) {
+    updateBody.password = bcrypt.hashSync(updateBody.password);
+  }
+
   await User.update(updateBody, {
     where: { id: userId },
   });
