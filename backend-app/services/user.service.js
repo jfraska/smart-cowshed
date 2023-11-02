@@ -4,12 +4,13 @@ const User = db.user;
 const ApiError = require("../utils/ApiError");
 const bcrypt = require("bcryptjs");
 const Sequelize = require("sequelize");
+const { convertNumberTelp } = require("../utils/helper");
 
 const createUser = async (userBody) => {
   if (await User.findOne({ where: { username: userBody.username } })) {
     throw new ApiError(httpStatus.BAD_REQUEST, "Email already taken");
   }
-
+  userBody.no_telp = convertNumberTelp(userBody.no_telp);
   userBody.password = bcrypt.hashSync(userBody.password);
   return User.create(userBody);
 };

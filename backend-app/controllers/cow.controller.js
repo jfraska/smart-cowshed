@@ -9,7 +9,9 @@ const {
 } = require("../services");
 const db = require("../models");
 const Op = db.Sequelize.Op;
-const getPagingData = require("../utils/helper");
+const { getPagingData } = require("../utils/helper");
+const fs = require("fs");
+const path = require("path");
 
 const createCow = catchAsync(async (req, res) => {
   let data = req.body;
@@ -125,7 +127,20 @@ const getCow = catchAsync(async (req, res) => {
 });
 
 const deleteCow = catchAsync(async (req, res) => {
-  await cowService.deleteCowById(req.params.cowId);
+  const cow = await cowService.deleteCowById(req.params.cowId);
+  const filesToDelete = [cow.kakiImg, cow.mulutImg];
+
+  filesToDelete.forEach((fileName) => {
+    const filePath = path.join(__dirname, "../public/upload", fileName);
+    fs.unlink(filePath, (err) => {
+      if (err) {
+        console.error(`Gagal menghapus ${fileName}: ${err}`);
+      } else {
+        console.log(`${fileName} berhasil dihapus.`);
+      }
+    });
+  });
+
   res.status(httpStatus.NO_CONTENT).send();
 });
 
