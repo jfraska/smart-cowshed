@@ -74,7 +74,7 @@ const getCows = catchAsync(async (req, res) => {
     paramQuerySQL.where = { userId: req.user.id };
   } else if (req.user.role === "puskeswan") {
     paramQuerySQL.where = {
-      [Op.and]: [{ puskeswanId: req.user.id }, { userId: req.user.id }],
+      [Op.or]: [{ puskeswanId: req.user.id }, { userId: req.user.id }],
     };
   } else {
     paramQuerySQL.where = {};
