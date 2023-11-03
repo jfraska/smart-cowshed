@@ -2,7 +2,7 @@ const httpStatus = require("http-status");
 const ApiError = require("../utils/ApiError");
 const catchAsync = require("../utils/catchAsync");
 const { userService } = require("../services");
-const getPagingData = require("../utils/helper");
+const { getPagingData } = require("../utils/helper");
 
 const createUser = catchAsync(async (req, res) => {
   const user = await userService.createUser(req.body);
@@ -64,11 +64,10 @@ const getUser = catchAsync(async (req, res) => {
 });
 
 const updateUser = catchAsync(async (req, res) => {
-
   if (req.file) {
     req.body.profileImg = req.file.filename;
   }
-  
+
   const user = await userService.updateUserById(req.user.id, req.body);
   res.send(user);
 });
