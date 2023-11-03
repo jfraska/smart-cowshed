@@ -1,19 +1,19 @@
-'use strict';
+"use strict";
 
-const bcrypt = require('bcryptjs');
-const uuid = require('uuid');
+const bcrypt = require("bcryptjs");
+const uuid = require("uuid");
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return await queryInterface.bulkInsert('users', [
+    return await queryInterface.bulkInsert("users", [
       {
         id: uuid.v4(),
-        username: 'user',
-        password: bcrypt.hashSync('password1'),
-        name: 'User',
-        no_telp: '1234567890',
-        address: 'Address 1',
-        role: 'user',
+        username: "user",
+        password: bcrypt.hashSync("password1"),
+        name: "User",
+        no_telp: "+6285161710044",
+        address: "Address 1",
+        role: "user",
         lat: 12.345,
         lng: 45.678,
         createdAt: new Date(),
@@ -21,12 +21,12 @@ module.exports = {
       },
       {
         id: uuid.v4(),
-        username: 'admin',
-        password: bcrypt.hashSync('password2'),
-        name: 'Admin',
-        no_telp: '9876543210',
-        address: 'Address 2',
-        role: 'admin',
+        username: "admin",
+        password: bcrypt.hashSync("password2"),
+        name: "Admin",
+        no_telp: "-",
+        address: "Address 2",
+        role: "admin",
         lat: 34.567,
         lng: 56.789,
         createdAt: new Date(),
@@ -34,13 +34,13 @@ module.exports = {
       },
       {
         id: uuid.v4(),
-        username: 'pusngaglik',
-        password: bcrypt.hashSync('pusngaglik'),
-        name: 'Puskeswan Ngaglik',
-        no_telp: '+6281804350212',
+        username: "pusngaglik",
+        password: bcrypt.hashSync("pusngaglik"),
+        name: "Puskeswan Ngaglik",
+        no_telp: "+6281804350212",
         address:
-          'Jl. Palagan Tentara Pelajar, Bantarjo, Donoharjo, Kec. Ngaglik, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55581',
-        role: 'puskeswan',
+          "Jl. Palagan Tentara Pelajar, Bantarjo, Donoharjo, Kec. Ngaglik, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55581",
+        role: "puskeswan",
         lat: -7.702773,
         lng: 110.386642,
         createdAt: new Date(),
@@ -48,13 +48,13 @@ module.exports = {
       },
       {
         id: uuid.v4(),
-        username: 'puscangkringan',
-        password: bcrypt.hashSync('puscangkringan'),
-        name: 'Puskeswan Cangkringan',
-        no_telp: '+6282134322797',
+        username: "puscangkringan",
+        password: bcrypt.hashSync("puscangkringan"),
+        name: "Puskeswan Cangkringan",
+        no_telp: "+6282134322797",
         address:
-          'Jaranan, Argomulyo, Kec. Cangkringan, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55583',
-        role: 'puskeswan',
+          "Jaranan, Argomulyo, Kec. Cangkringan, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55583",
+        role: "puskeswan",
         lat: -7.658268,
         lng: 110.455773,
         createdAt: new Date(),
@@ -62,13 +62,13 @@ module.exports = {
       },
       {
         id: uuid.v4(),
-        username: 'puspakem',
-        password: bcrypt.hashSync('puspakem'),
-        name: 'Puskeswan Pakem',
-        no_telp: '(0274) 896242',
+        username: "puspakem",
+        password: bcrypt.hashSync("puspakem"),
+        name: "Puskeswan Pakem",
+        no_telp: "(0274) 896242",
         address:
-          'Jl. Cangkringan No.05, Area Sawah, Pakembinangun, Kec. Pakem, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55582',
-        role: 'puskeswan',
+          "Jl. Cangkringan No.05, Area Sawah, Pakembinangun, Kec. Pakem, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55582",
+        role: "puskeswan",
         lat: -7.667545,
         lng: 110.421896,
         createdAt: new Date(),
@@ -76,13 +76,13 @@ module.exports = {
       },
       {
         id: uuid.v4(),
-        username: 'pusdepok',
-        password: bcrypt.hashSync('pusdepok'),
-        name: 'Puskeswan Depok',
-        no_telp: '+6281392657426',
+        username: "pusdepok",
+        password: bcrypt.hashSync("pusdepok"),
+        name: "Puskeswan Depok",
+        no_telp: "+6281392657426",
         address:
-          'Ngringin, Condongcatur, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281',
-        role: 'puskeswan',
+          "Ngringin, Condongcatur, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281",
+        role: "puskeswan",
         lat: -7.759089,
         lng: 110.414671,
         createdAt: new Date(),
@@ -90,13 +90,13 @@ module.exports = {
       },
       {
         id: uuid.v4(),
-        username: 'pusngemplak',
-        password: bcrypt.hashSync('pusngemplak'),
-        name: 'Puskeswan Ngemplak',
-        no_telp: '+6281804350212',
+        username: "pusngemplak",
+        password: bcrypt.hashSync("pusngemplak"),
+        name: "Puskeswan Ngemplak",
+        no_telp: "+6281804350212",
         address:
-          'Kragilan 002/022, Balong, Bimomartani, Kec. Ngemplak, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55584',
-        role: 'puskeswan',
+          "Kragilan 002/022, Balong, Bimomartani, Kec. Ngemplak, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55584",
+        role: "puskeswan",
         lat: -7.686268,
         lng: 110.459973,
         createdAt: new Date(),
@@ -104,13 +104,13 @@ module.exports = {
       },
       {
         id: uuid.v4(),
-        username: 'pusturi',
-        password: bcrypt.hashSync('pusturi'),
-        name: 'Puskeswan Turi',
-        no_telp: '-',
+        username: "pusturi",
+        password: bcrypt.hashSync("pusturi"),
+        name: "Puskeswan Turi",
+        no_telp: "-",
         address:
-          'Sangurejo, Wono Kerto, Kec. Turi, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55551',
-        role: 'puskeswan',
+          "Sangurejo, Wono Kerto, Kec. Turi, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55551",
+        role: "puskeswan",
         lat: -7.651894,
         lng: 110.368749,
         createdAt: new Date(),
@@ -118,13 +118,13 @@ module.exports = {
       },
       {
         id: uuid.v4(),
-        username: 'pussleman',
-        password: bcrypt.hashSync('pussleman'),
-        name: 'Puskeswan Sleman',
-        no_telp: '(0274) 867372',
+        username: "pussleman",
+        password: bcrypt.hashSync("pussleman"),
+        name: "Puskeswan Sleman",
+        no_telp: "(0274) 867372",
         address:
-          'Wadas, Tridadi, Kec. Sleman, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55514',
-        role: 'puskeswan',
+          "Wadas, Tridadi, Kec. Sleman, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55514",
+        role: "puskeswan",
         lat: -7.699115,
         lng: 110.347972,
         createdAt: new Date(),
@@ -132,13 +132,13 @@ module.exports = {
       },
       {
         id: uuid.v4(),
-        username: 'pustempel',
-        password: bcrypt.hashSync('pustempel'),
-        name: 'Puskeswan Tempel',
-        no_telp: '-',
+        username: "pustempel",
+        password: bcrypt.hashSync("pustempel"),
+        name: "Puskeswan Tempel",
+        no_telp: "-",
         address:
-          'Jl. Medari Cemoro, Mancasan, Area Sawah, Tambakrejo, Kec. Tempel, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55552',
-        role: 'puskeswan',
+          "Jl. Medari Cemoro, Mancasan, Area Sawah, Tambakrejo, Kec. Tempel, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55552",
+        role: "puskeswan",
         lat: -7.68195,
         lng: 110.314342,
         createdAt: new Date(),
@@ -146,13 +146,13 @@ module.exports = {
       },
       {
         id: uuid.v4(),
-        username: 'pusseyegan',
-        password: bcrypt.hashSync('pusseyegan'),
-        name: 'Puskeswan Seyegan',
-        no_telp: '-',
+        username: "pusseyegan",
+        password: bcrypt.hashSync("pusseyegan"),
+        name: "Puskeswan Seyegan",
+        no_telp: "-",
         address:
-          'Sowokaton, Margokaton, Kec. Seyegan, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55561',
-        role: 'puskeswan',
+          "Sowokaton, Margokaton, Kec. Seyegan, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55561",
+        role: "puskeswan",
         lat: -7.71906,
         lng: 110.301104,
         createdAt: new Date(),
@@ -160,13 +160,13 @@ module.exports = {
       },
       {
         id: uuid.v4(),
-        username: 'pusmoyudan',
-        password: bcrypt.hashSync('pusmoyudan'),
-        name: 'Puskeswan Moyudan',
-        no_telp: '-',
+        username: "pusmoyudan",
+        password: bcrypt.hashSync("pusmoyudan"),
+        name: "Puskeswan Moyudan",
+        no_telp: "-",
         address:
-          'Celungan, Sumberagung, Kec. Moyudan, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55563',
-        role: 'puskeswan',
+          "Celungan, Sumberagung, Kec. Moyudan, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55563",
+        role: "puskeswan",
         lat: -7.7404,
         lng: 110.263042,
         createdAt: new Date(),
@@ -174,13 +174,13 @@ module.exports = {
       },
       {
         id: uuid.v4(),
-        username: 'pussentolo',
-        password: bcrypt.hashSync('pussentolo'),
-        name: 'Puskeswan Sentolo',
-        no_telp: '+6285228949176',
+        username: "pussentolo",
+        password: bcrypt.hashSync("pussentolo"),
+        name: "Puskeswan Sentolo",
+        no_telp: "+6285228949176",
         address:
-          'Jl. Raya Wates - Jogjakarta No.88, Kali Bondol, Sentolo, Kec. Sentolo, Kabupaten Kulon Progo, Daerah Istimewa Yogyakarta 55664',
-        role: 'puskeswan',
+          "Jl. Raya Wates - Jogjakarta No.88, Kali Bondol, Sentolo, Kec. Sentolo, Kabupaten Kulon Progo, Daerah Istimewa Yogyakarta 55664",
+        role: "puskeswan",
         lat: -7.832035,
         lng: 110.221057,
         createdAt: new Date(),
@@ -190,6 +190,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    return await queryInterface.bulkDelete('users', null, {});
+    return await queryInterface.bulkDelete("users", null, {});
   },
 };
