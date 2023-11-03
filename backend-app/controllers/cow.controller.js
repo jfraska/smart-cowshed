@@ -35,7 +35,7 @@ const createCow = catchAsync(async (req, res) => {
   if (predictKaki == 0) data.kaki = "sakit";
   else data.kaki = "sehat";
 
-  if (predictMulut == 2) data.mulut = "sakit";
+  if (predictMulut == 1) data.mulut = "sakit";
   else data.mulut = "sehat";
 
   if (data.kaki == "sakit" && data.mulut == "sakit" && data.suhu >= 39.4) {
@@ -47,8 +47,6 @@ const createCow = catchAsync(async (req, res) => {
   //get nearest puskeswan
   nearestPuskeswan = await userService.getPuskeswanByRole(data.lat, data.lng);
   data.puskeswanId = nearestPuskeswan[0].id;
-
-  console.log(nearestPuskeswan);
 
   const cow = await cowService.createCow(data);
 
