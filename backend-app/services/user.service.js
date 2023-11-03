@@ -28,7 +28,9 @@ const getPuskeswanByRole = async (userLat, userLng) => {
         Sequelize.fn(
           "SQRT",
           Sequelize.literal(
-            `POW(69.1 * (lat - ${userLat}), 2) + POW(69.1 * (${userLng} - lng) * COS(lat / 57.3), 2)`
+            `POW(69.1 * (lat - ${Number(userLat)}), 2) + POW(69.1 * (${Number(
+              userLng
+            )} - lng) * COS(lat / 57.3), 2)`
           )
         ),
         "distance",
