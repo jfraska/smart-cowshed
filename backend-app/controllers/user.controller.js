@@ -3,6 +3,8 @@ const ApiError = require("../utils/ApiError");
 const catchAsync = require("../utils/catchAsync");
 const { userService } = require("../services");
 const { getPagingData } = require("../utils/helper");
+const db = require("../models");
+const Op = db.Sequelize.Op;
 
 const createUser = catchAsync(async (req, res) => {
   const user = await userService.createUser(req.body);
@@ -17,22 +19,15 @@ const getUsers = catchAsync(async (req, res) => {
   let limit = 10;
   let offset = 0;
 
-  // // searching
-  // if (search) {
-  //   paramQuerySQL.where = {
-  //     [Op.and]: [
-  //       paramQuerySQL.where,
-  //       {
-  //         [Op.and]: [
-  //           search.id_sapi
-  //             ? { id_sapi: { [Op.like]: `%${search.id_sapi}%` } }
-  //             : null,
-  //           search.status ? { status: search.status } : null,
-  //         ],
-  //       },
-  //     ],
-  //   };
-  // }
+  // searching
+  if (search) {
+    paramQuerySQL.where = {
+      [Op.and]: [
+        search.name ? { name: { [Op.like]: `%${search.name}%` } } : null,
+        search.role ? { role: search.role } : null,
+      ],
+    };
+  }
 
   // pagination
   if (page) {

@@ -58,8 +58,8 @@ module.exports = {
           model: "users",
           key: "id",
         },
-        onUpdate: "RESTRICT",
-        onDelete: "RESTRICT",
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
       },
     });
   },

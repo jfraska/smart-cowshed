@@ -72,11 +72,12 @@ const getUserByParam = async (param) => {
     attributes: [
       "id",
       "username",
-      "profileImg",
       "name",
       "role",
-      "no_telp",
       "address",
+      "no_telp",
+      "lat",
+      "lng",
     ],
   });
 };
@@ -98,6 +99,19 @@ const updateUserById = async (userId, updateBody) => {
   return updateBody;
 };
 
+const deleteUserById = async (userId) => {
+  const user = await getUserById(userId);
+  if (!user) {
+    throw new ApiError(httpStatus.NOT_FOUND, "user not found");
+  }
+
+  await user.destroy({
+    where: { id: userId },
+  });
+
+  return user;
+};
+
 module.exports = {
   createUser,
   getUserByUsername,
@@ -105,4 +119,5 @@ module.exports = {
   getUserByParam,
   updateUserById,
   getPuskeswanByRole,
+  deleteUserById,
 };

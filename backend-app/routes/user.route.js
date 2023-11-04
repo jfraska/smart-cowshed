@@ -46,7 +46,10 @@ router
     auth("getUsers"),
     validate(userValidation.getUsers),
     userController.getUsers
-  )
+  );
+
+router
+  .route("/:userId")
   .delete(
     auth("manageUsers"),
     validate(userValidation.deleteUser),
