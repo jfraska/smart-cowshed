@@ -8,7 +8,7 @@ const { convertNumberTelp } = require("../utils/helper");
 
 const createUser = async (userBody) => {
   if (await User.findOne({ where: { username: userBody.username } })) {
-    throw new ApiError(httpStatus.BAD_REQUEST, "Email already taken");
+    throw new ApiError(httpStatus.BAD_REQUEST, "Username already taken");
   }
   userBody.no_telp = convertNumberTelp(userBody.no_telp);
   userBody.password = bcrypt.hashSync(userBody.password);
