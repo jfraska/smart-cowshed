@@ -26,6 +26,9 @@ module.exports = (sequelize, Sequelize) => {
     suhu: {
       type: Sequelize.FLOAT,
     },
+    status_suhu: {
+      type: Sequelize.FLOAT,
+    },
     status: {
       type: Sequelize.STRING,
     },

@@ -15,6 +15,10 @@ module.exports = {
         type: Sequelize.DOUBLE,
         defaultValue: null,
       },
+      status_suhu: {
+        type: Sequelize.STRING(255),
+        defaultValue: null,
+      },
       status: {
         type: Sequelize.STRING(255),
         defaultValue: null,

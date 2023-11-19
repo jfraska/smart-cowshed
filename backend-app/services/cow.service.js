@@ -24,6 +24,7 @@ const getCowById = async (id) => {
       "kaki",
       "mulut",
       "suhu",
+      "status_suhu",
       "status",
       "kakiImg",
       "mulutImg",
