@@ -38,12 +38,11 @@ const createCow = catchAsync(async (req, res) => {
   if (predictMulut == 1) data.mulut = "sakit";
   else data.mulut = "sehat";
 
-  if (data.suhu > 38.9) data.status_suhu = "sakit";
+  if (data.suhu > 41) data.status_suhu = "sakit";
   else data.status_suhu = "sehat";
 
   if (
-    data.kaki == "sakit" &&
-    data.mulut == "sakit" &&
+    (data.kaki == "sakit" || data.mulut == "sakit") &&
     data.status_suhu >= "sakit"
   ) {
     data.status = "sakit";
